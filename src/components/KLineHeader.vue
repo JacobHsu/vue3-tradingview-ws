@@ -17,6 +17,7 @@
 </template>
 <script>
   import { ElSelect, ElOption } from 'element-plus'
+  
   export default {
     name: 'KLineHeader',
     components: { ElSelect, ElOption },
