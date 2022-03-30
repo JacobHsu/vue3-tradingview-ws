@@ -1,5 +1,9 @@
 # vue3-tradingview-ws
 
+Element Plus [On-demand Import](https://element-plus.org/en-US/guide/quickstart.html#on-demand-import)  
+element-plus [select](https://element-plus.org/zh-CN/component/select.html)  
+
+
 ## Project setup
 ```
 yarn install

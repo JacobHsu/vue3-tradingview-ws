@@ -1,5 +1,14 @@
 <template>
   <div class="hello">
+    <el-button>I am ElButton</el-button>
+    <el-select v-model="value" class="m-2" placeholder="Select">
+      <el-option
+        v-for="item in options"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value"
+      />
+    </el-select>
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
@@ -31,11 +40,44 @@
 </template>
 
 <script>
+import { ref } from 'vue'
+import { ElButton, ElSelect, ElOption } from 'element-plus'
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
-  }
+  },
+  components: { ElButton, ElSelect, ElOption },
+  setup() {
+    const value = ref('')
+    const options = [
+      {
+        value: 'Option1',
+        label: 'Option1',
+      },
+      {
+        value: 'Option2',
+        label: 'Option2',
+      },
+      {
+        value: 'Option3',
+        label: 'Option3',
+      },
+      {
+        value: 'Option4',
+        label: 'Option4',
+      },
+      {
+        value: 'Option5',
+        label: 'Option5',
+      },
+    ]
+    return {
+      value,
+      options
+    }
+  },
 }
 </script>
 
