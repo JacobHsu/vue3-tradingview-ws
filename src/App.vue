@@ -1,12 +1,17 @@
 <template>
   <div>
     <KLineHeader
+      v-if="symbolList.value"
       :symbol="symbol"
       :symbolList="symbolList.value"
       @symbolHanlder="symbolHanlder"
     />
     <el-main v-if="symbol">
-      {{symbolInfo}}
+      <KLineWidget
+        :symbolInfo="symbolInfo"
+        :symbol="symbol.toLocaleUpperCase()"
+        ref="kLineRef"
+      />
     </el-main>
   </div>
   <!-- <img alt="Vue logo" src="./assets/logo.png">
@@ -16,13 +21,17 @@
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 import KLineHeader from '@/components/KLineHeader'
+import KLineWidget from '@/components/KLineWidget'
 import { ref, onMounted, reactive } from 'vue'
+import { ElMain } from 'element-plus'
 import { getSymbols } from '@/api'
 import { ws } from '@/utils/socket'
 export default {
   name: 'App',
   components: {
     KLineHeader,
+    KLineWidget,
+    ElMain,
     // HelloWorld
   },
   setup() {
