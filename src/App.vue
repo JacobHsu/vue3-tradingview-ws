@@ -18,6 +18,7 @@
 import KLineHeader from '@/components/KLineHeader'
 import { ref, onMounted, reactive } from 'vue'
 import { getSymbols } from '@/api'
+import { ws } from '@/utils/socket'
 export default {
   name: 'App',
   components: {
@@ -30,6 +31,7 @@ export default {
     const symbolInfo = ref({})
     const kLineRef = ref(null)
     onMounted(async () => {
+      ws.initWebSocket()
       const [list, symbolData] = await getSymbols()
       symbolList.value = list
       symbol.value = symbolData

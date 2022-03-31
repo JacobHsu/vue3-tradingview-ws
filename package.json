@@ -10,7 +10,10 @@
   "dependencies": {
     "axios": "^0.26.1",
     "core-js": "^3.6.5",
+    "dayjs": "^1.11.0",
     "element-plus": "^2.1.7",
+    "events": "^3.3.0",
+    "pako": "^2.0.4",
     "query-string": "^7.1.1",
     "vue": "^3.0.0"
   },
