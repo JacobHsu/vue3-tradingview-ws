@@ -17,6 +17,22 @@ export const getSymbols = async () => {
       })
     }
   })
+
+  // sort by name
+  symbolList.sort(function(a, b) {
+  var nameA = a['base-currency'].toUpperCase(); // ignore upper and lowercase
+  var nameB = b['base-currency'].toUpperCase(); // ignore upper and lowercase
+  if (nameA < nameB) {
+    return -1;
+  }
+  if (nameA > nameB) {
+    return 1;
+  }
+
+  // names must be equal
+  return 0;
+});
+
   const symbolData = symbolList.length ? symbolList[0].symbol : ''
   return [symbolList, symbolData]
 }
