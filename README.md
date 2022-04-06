@@ -8,6 +8,30 @@ tradingview-web-socket/[charting_library](https://github.com/472647301/tradingvi
 
 npm [tradingview-api](https://github.com/472647301/tradingview-web-socket/tree/master/tradingview-api)
 
+## tradingview
+
+initTradingView
+
+```js
+const initTradingView = () => {
+    widget.value = new TvWidget({
+        ...
+        disabled_features: [
+        'volume_force_overlay', // 成交量與k線分離
+        ],
+        enabled_features: [
+        'hide_left_toolbar_by_default'
+        ],
+        overrides:{
+        'volumePaneSize': 'medium', //成交量高度設置，可選值 large, medium, small, tiny
+        }
+    })
+}
+```
+
+[featuresets](https://tradingview.gitee.io/featuresets/)
+TradingView 中文开发文档 [功能集](https://www.lhsz.xyz/read/tradingViewWikiCn/book-Featuresets.md) [volume_force_overlay](https://zlq4863947.gitbook.io/tradingview/4-tu-biao-ding-zhi/customization-overview)
+
 ## element-plus
 
 Element Plus [On-demand Import](https://element-plus.org/en-US/guide/quickstart.html#on-demand-import)  

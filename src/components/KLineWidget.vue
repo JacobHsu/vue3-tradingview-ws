@@ -153,6 +153,15 @@
           locale: 'zh',
           theme: 'Dark',
           timezone: 'Asia/Shanghai',
+          disabled_features: [
+            'volume_force_overlay', // 成交量與k線分離
+          ],
+          enabled_features: [
+            'hide_left_toolbar_by_default'
+          ],
+          overrides:{
+            'volumePaneSize': 'medium', //成交量高度設置，可選值 large, medium, small, tiny
+          }
         })
       }
       const setSymbol = (newSymbol) => {
