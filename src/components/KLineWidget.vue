@@ -110,9 +110,10 @@
       /** 配置trading-view */
       const resolveSymbol = () => {
         return new Promise((resolve) => {
+          const display_name = symbol.value.replace('USDT', '/USDT')
           resolve({
-            name: symbol.value,
-            full_name: symbol.value,
+            name: display_name,
+            full_name: display_name,
             description: symbol.value,
             type: symbol.value,
             session: '24x7',
@@ -142,10 +143,11 @@
         })
       )
       /** 初始化trading-view */
+      const display_name = symbol.value.replace('USDT', '/USDT')
       const initTradingView = () => {
         widget.value = new TvWidget({
           fullscreen: true,
-          symbol: symbol.value,
+          symbol: display_name,
           interval: intervalMap[interval.value],
           container_id: 'tv_chart_container',
           datafeed: datafeed.value,
