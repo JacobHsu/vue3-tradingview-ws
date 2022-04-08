@@ -32,6 +32,10 @@ const initTradingView = () => {
 [featuresets](https://tradingview.gitee.io/featuresets/)
 TradingView 中文开发文档 [功能集](https://www.lhsz.xyz/read/tradingViewWikiCn/book-Featuresets.md) [volume_force_overlay](https://zlq4863947.gitbook.io/tradingview/4-tu-biao-ding-zhi/customization-overview)
 
+### 技術指標
+
+[布林帶(BB)](https://tw.tradingview.com/scripts/bollingerbands/) [studys](https://github.com/472647301/tradingview-web-socket/tree/master/react-typescript-demo/src/studys)
+
 ## element-plus
 
 Element Plus [On-demand Import](https://element-plus.org/en-US/guide/quickstart.html#on-demand-import)  

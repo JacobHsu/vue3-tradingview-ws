@@ -9,6 +9,8 @@
   import { getKlineHistory } from '@/api'
   import { intervalMap, supported_resolutions } from '@/utils/hardCode'
   import { ws } from '@/utils/socket'
+  import BB from "../studys/BB";
+
   export default {
     name: 'KLineWidget',
     props: {
@@ -153,18 +155,28 @@
           datafeed: datafeed.value,
           library_path: '/charting_library/',
           locale: 'zh',
-          theme: 'Dark',
+          theme: "Light", // 'Dark',
           timezone: 'Asia/Shanghai',
           disabled_features: [
             'volume_force_overlay', // 成交量與k線分離
+            "header_resolutions",
+            "header_compare",
+            "header_undo_redo",
           ],
           enabled_features: [
             'hide_left_toolbar_by_default'
           ],
           overrides:{
             'volumePaneSize': 'medium', //成交量高度設置，可選值 large, medium, small, tiny
-          }
+          },
+          custom_indicators_getter: function (PineJS) {
+            return Promise.resolve([BB(PineJS)]);
+          },          
         })
+
+        widget.value.onChartReady(function() {
+          widget.value.chart().createStudy('myBB', false, true);
+        });
       }
       const setSymbol = (newSymbol) => {
         unsubscribeKLine()
