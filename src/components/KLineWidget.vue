@@ -10,6 +10,16 @@
   import { intervalMap, supported_resolutions } from '@/utils/hardCode'
   import { ws } from '@/utils/socket'
   import BB from "../studys/BB";
+  import EMA from "../studys/EMA";
+
+  // 切换到tv的iframe可通过 window.JSServer.studyLibrary 查看tv所有内置指标详情
+  /**
+   * 默认展示指标 Array<[指标名称, [指标入参]]>
+   */
+  const defaultStudy = [
+    ["myBB", [20, 2]],
+    ["myEMA", [9, 26]],
+  ];
 
   export default {
     name: 'KLineWidget',
@@ -170,12 +180,14 @@
             'volumePaneSize': 'medium', //成交量高度設置，可選值 large, medium, small, tiny
           },
           custom_indicators_getter: function (PineJS) {
-            return Promise.resolve([BB(PineJS)]);
+            return Promise.resolve([BB(PineJS), EMA(PineJS)]);
           },          
         })
 
         widget.value.onChartReady(function() {
-          widget.value.chart().createStudy('myBB', false, true);
+          for (let item of defaultStudy) {
+            widget.value.chart().createStudy(item[0], false, true, item[1]);
+          }
         });
       }
       const setSymbol = (newSymbol) => {

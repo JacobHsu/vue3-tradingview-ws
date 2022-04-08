@@ -45,6 +45,8 @@ export default {
       symbolList.value = list
       symbol.value = symbolData
       symbolInfo.value = list[0]
+
+      symbolHanlder("ethusdt")
     })
     const symbolHanlder = (e) => {
       symbol.value = e

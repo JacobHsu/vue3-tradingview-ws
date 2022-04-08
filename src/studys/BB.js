@@ -20,7 +20,7 @@ export default function BB(s) {
             trackPrice: false,
             transparency: 0,
             visible: true,
-            color: "#FF6D00",
+            color: "#2196F3",
           },
           plot_1: {
             linestyle: 0,
