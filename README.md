@@ -30,7 +30,8 @@ const initTradingView = () => {
 ```
 
 [featuresets](https://tradingview.gitee.io/featuresets/)
-TradingView 中文开发文档 [功能集](https://www.lhsz.xyz/read/tradingViewWikiCn/book-Featuresets.md) [volume_force_overlay](https://zlq4863947.gitbook.io/tradingview/4-tu-biao-ding-zhi/customization-overview)
+TradingView 中文开发文档 [功能集](https://www.lhsz.xyz/read/tradingViewWikiCn/book-Featuresets.md) [volume_force_overlay](https://zlq4863947.gitbook.io/tradingview/4-tu-biao-ding-zhi/customization-overview)  
+[自定义UI控件](https://www.kancloud.cn/isung/tradingview/972226) widget.headerReady() createButton
 
 ### 技術指標
 

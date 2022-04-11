@@ -12,6 +12,19 @@
   import BB from "../studys/BB";
   import EMA from "../studys/EMA";
 
+
+  const INTERVAL = {
+    "1": { server: "1min", name: "1m" },
+    "5": { server: "5min", name: "5m" },
+    // "15": { server: "15min", name: "15m" },
+    "30": { server: "30min", name: "30m" },
+    "60": { server: "60min", name: "1h" },
+    "240": { server: "4hour", name: "4h" },
+    "1440": { server: "1day", name: "1D" },
+    "10080": { server: "1week", name: "1W" },
+    "302400": { server: "1mon", name: "1M" },
+  };
+
   // 切换到tv的iframe可通过 window.JSServer.studyLibrary 查看tv所有内置指标详情
   /**
    * 默认展示指标 Array<[指标名称, [指标入参]]>
@@ -21,6 +34,7 @@
     ["myEMA", [9, 26]],
     ["MACD", [12, 26, "close", 9]],
   ];
+
 
   export default {
     name: 'KLineWidget',
@@ -37,6 +51,7 @@
       const widget = ref(null)
       const interval = ref('5min')
       const { symbol, symbolInfo } = toRefs(props)
+      const buttons = ref([]);
       /** 訂閱websocket */
       const subscribeKLine = () => {
         ws.subscribe(
@@ -193,7 +208,38 @@
             chart.createStudy(item[0], false, true, item[1]);
           }
         });
+
+
+        widget.value.headerReady().then(function() {
+
+          for (let key in INTERVAL) {
+            const item = INTERVAL[key];
+            const button =  widget.value.createButton();
+            button.setAttribute("interval", key);
+            button.addEventListener("click", () => onButtonClick(key));
+            button.textContent =  item.name;
+            buttons.value.push(button);
+          }
+        });
       }
+
+      const onButtonClick = (resolution) => {
+        widget.value.chart().setResolution(resolution, () => {
+          addButtonColor(resolution);
+        });
+      };
+
+      const addButtonColor = (resolution) => {
+          for (let button of buttons.value) {
+            const interval = button.getAttribute("interval");
+            if (interval === resolution) {
+              button.style.color = "#1878F3";
+            } else {
+              button.style.color = "#131722";
+            }
+          }
+      };
+
       const setSymbol = (newSymbol) => {
         unsubscribeKLine()
         symbol.value = newSymbol
