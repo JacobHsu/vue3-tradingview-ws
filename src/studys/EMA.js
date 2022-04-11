@@ -38,7 +38,7 @@ export default function EMA(n) {
             trackPrice: false,
             transparency: 35,
             visible: true,
-            color: "#000080",
+            color: "#FFD700",
           },
         },
         precision: 4,

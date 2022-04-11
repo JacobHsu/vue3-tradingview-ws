@@ -19,6 +19,7 @@
   const defaultStudy = [
     ["myBB", [20, 2]],
     ["myEMA", [9, 26]],
+    ["MACD", [12, 26, "close", 9]],
   ];
 
   export default {
@@ -184,9 +185,12 @@
           },          
         })
 
-        widget.value.onChartReady(function() {
+        widget.value.onChartReady(function () {
+          const chart = widget.value.chart();
+          // 先清除已创建指标
+          // chart.removeAllStudies(); // 删除全部指标 包含成交量
           for (let item of defaultStudy) {
-            widget.value.chart().createStudy(item[0], false, true, item[1]);
+            chart.createStudy(item[0], false, true, item[1]);
           }
         });
       }
